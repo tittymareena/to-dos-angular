@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
                          email: ["",[Validators.required,Validators.email,]],
                          password: ["",[Validators.required,Passwordvalidator.oddNumberOfS]]
                         })
-                        console.log(" this.loginForm", this.loginForm)
     // this.loginForm = new FormGroup({
     //   email: new FormControl('', [Validators.required, Validators.email,Validators.pattern(
     //     '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,63}$',
@@ -34,7 +33,7 @@ export class LoginComponent implements OnInit {
     //   )
     // });
    }
-   hide = true;
+  hide = true;
   ngOnInit(): void {
   }
 
