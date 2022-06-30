@@ -15,13 +15,28 @@
         </div>
         <div class="mt-top-2">
           <mat-form-field appearance="fill">
-            <mat-label>Enter your password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'">
+            <!-- <mat-label>Enter your password</mat-label> -->
+            <input placeholder="Enter your password" matInput [type]="hide ? 'password' : 'text'" formControlName="password">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
-
+            <mat-error
+            *ngIf="
+            loginForm.controls['password'].errors?.required &&
+            loginForm.controls['password'].touched
+            "
+          >
+            Password is mandatory
+          </mat-error>
+          <mat-error
+            *ngIf="
+            loginForm.controls['password'].errors?.oddNumberA &&
+            loginForm.controls['password'].touched
+            "
+          >
+            Password should contain odd number of a's
+          </mat-error>
         </mat-form-field>
 
         </div>

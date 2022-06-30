@@ -18,8 +18,9 @@ export class LoginComponent implements OnInit {
   ) {
     this.loginForm = fb.group({
                          email: ["",[Validators.required,Validators.email,]],
-                         password: ["",[Passwordvalidator]]
+                         password: ["",[Validators.required,Passwordvalidator.oddNumberOfS]]
                         })
+                        console.log(" this.loginForm", this.loginForm)
     // this.loginForm = new FormGroup({
     //   email: new FormControl('', [Validators.required, Validators.email,Validators.pattern(
     //     '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,63}$',
