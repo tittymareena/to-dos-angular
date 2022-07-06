@@ -28,4 +28,13 @@
     <button (click)="deleteSelectedTodos()">Delete Selected</button>
   </div>
 
+  <div class="mtop20">
+  <button (click)="increment()">Increment</button>
+
+<div>Current Count: {{ count$ | async }}</div>
+
+<button (click)="decrement()">Decrement</button>
+
+<button (click)="reset()">Reset Counter</button>
+  </div>
 </div>

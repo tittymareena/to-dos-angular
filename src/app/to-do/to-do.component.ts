@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from "../services/auth.service"
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store'
+import { increment, decrement, reset } from '../ngrx/actions';
 
 @Component({
   selector: 'todos',
@@ -11,11 +14,12 @@ export class TodosComponent {
   todos: any;
   todoObj: any;
   username: any;
-
-  constructor(private user:AuthService) {
+  count$: Observable<number> | any;
+  constructor(private user:AuthService, private store: Store<{ count: number }>) {
     this.newTodo = '';
     this.todos = [];
     this.username = '' ;
+    this.count$ = store.select('count');
 
   }
   ngOnInit(): void {
@@ -30,7 +34,6 @@ export class TodosComponent {
     };
     this.todos.push(this.todoObj);
     this.newTodo = '';
-    //event.preventDefault();
   }
 
   deleteTodo(index: any) {
@@ -47,5 +50,20 @@ export class TodosComponent {
     this.user.getData().subscribe(data =>{
       console.log("Api called", data)
     })
+  }
+
+  increment() {
+    // TODO: Dispatch an increment action
+    this.store.dispatch(increment());
+  }
+
+  decrement() {
+    // TODO: Dispatch a decrement action
+    this.store.dispatch(decrement());
+  }
+
+  reset() {
+    // TODO: Dispatch a reset action
+    this.store.dispatch(reset());
   }
 }

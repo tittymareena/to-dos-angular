@@ -12,7 +12,9 @@ import { TodosComponent } from './to-do/to-do.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyHttpInterceptor } from './http.interceptor';
 import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card'
+import { MatCardModule } from '@angular/material/card';
+import { StoreModule } from '@ngrx/store'
+import { testReducer } from './ngrx/reducer'
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { MatCardModule } from '@angular/material/card'
     AppRoutingModule,
     HttpClientModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    StoreModule.forRoot({ count: testReducer }, {})
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: MyHttpInterceptor, multi: true }],
   bootstrap: [AppComponent]
